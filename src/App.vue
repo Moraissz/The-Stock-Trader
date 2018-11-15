@@ -1,16 +1,25 @@
 <template>
     <div class="container">
-
+        <appHeader></appHeader>
+        <div class="row">
+            <div class="col-xs-12">
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-
-    export default {
-
+import appHeader from './components/Header.vue';
+export default {
+    components: {
+        appHeader
     }
+}
 </script>
 
 <style>
-
+ body{
+     padding: 30px;
+ }
 </style>
