@@ -1,44 +1,23 @@
 <template>
-  <div class="cointainer">
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
-        </div>
-      </div>
+    <div>
+      <appStock v-for="stock in stocks" :key="stock.id" :stock="stock" ></appStock>
     </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    
+    
 </template>
 
 <script>
+import appStock from './Stock.vue'
 
 export default {
-
+  components: {
+    appStock,
+  },
+  computed:{
+       stocks () {
+         return this.$store.getters['stocks/stocks']
+       }
+  },
 
 }
 </script>

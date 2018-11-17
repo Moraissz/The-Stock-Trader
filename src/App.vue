@@ -11,10 +11,14 @@
 
 <script>
 import appHeader from './components/Header.vue';
+import stocks from './data/stocks';
 export default {
     components: {
         appHeader
-    }
+    },
+    created() {
+        this.$store.dispatch('stocks/initStocks',stocks)
+    },
 }
 </script>
 
