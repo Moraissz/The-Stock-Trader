@@ -16,8 +16,8 @@ const mutations = {
 }
 
 const actions = {
-  buySuccessful: ({ commit }, payload) => {
-    commit('portfolio/buySuccessful',payload,{root: true});
+  buySuccessful: ({ commit }, stock) => {
+    commit('portfolio/buySuccessful',stock,{root: true});
  },
   initStocks: ({ commit },stocks) => {
     commit('setStocks',stocks)

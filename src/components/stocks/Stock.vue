@@ -18,7 +18,7 @@
       <div class="pull-right">
         <button 
         class="btn btn-success" 
-        @click="buySuccessful({stock: stock, quantity:quantity})"
+        @click="buySuccessful"
         :disabled="isNotValidated || insufficientFunds"
         >{{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}</button>
       </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
- import { mapActions } from 'vuex';
+ 
 export default {
    data: () => ({
       quantity: 0,
@@ -49,9 +49,16 @@ export default {
    props :['stock'],
    
    methods: {
-     ...mapActions('stocks',[
-       'buySuccessful'
-     ]),
+      buySuccessful(){
+          const stock = {
+              id: this.stock.id,
+              name: this.stock.name,
+              price:this.stock.price,
+              quantity:this.quantity,
+          }
+          this.$store.dispatch('stocks/buySuccessful',stock)
+        this.quantity = 0;
+      }
    }
 }
 </script>
