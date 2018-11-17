@@ -25,7 +25,7 @@ const mutations = {
   },
   sellStock: (state,stock) => {
     const sellStock = state.stocks.find(element => element.id === stock.id)
-    if(sellStock.quantity > stock.quantity){
+    if(parseInt(sellStock.quantity) > parseInt(stock.quantity)){
       sellStock.quantity = parseInt(sellStock.quantity) - parseInt(stock.quantity)
     }
     else{
@@ -39,7 +39,7 @@ const mutations = {
 
 const actions = {
     sellStock: ({ commit },stock) => {
-          commit('sellStock',stocks)
+          commit('sellStock',stock)
     }
 }
 
