@@ -19,7 +19,8 @@
         <button 
         class="btn btn-info" 
         @click="sellSuccessful"
-        >Sell</button>
+        :disabled="stock.quantity < quantity || isNotValidated "
+        >{{ stock.quantity < quantity ? 'Not Enough' : 'Sell' }}</button>
       </div>
     </div>
     </div>
@@ -37,6 +38,9 @@ export default {
    computed:{
      funds() {
        return this.$store.getters['portfolio/funds'];
+     },
+      isNotValidated () {
+       return this.quantity <= 0;
      },
    },
    props :['stock'],
